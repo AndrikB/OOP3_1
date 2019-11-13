@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="lab2.TariffStAXParserTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2019-11-07T20:32:12" hostname="DESKTOP-NLVV63L" time="0.02">
+  <properties/>
+  <testcase name="testParse" classname="lab2.TariffStAXParserTest" time="0.011"/>
+  <testcase name="testGetAllTariffsEmptyTree" classname="lab2.TariffStAXParserTest" time="0.003"/>
+  <testcase name="testGetAllTariffsNotEmptyTree" classname="lab2.TariffStAXParserTest" time="0.004"/>
+  <system-out><![CDATA[parse
+getAllTariffs
+getAllTariffs
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

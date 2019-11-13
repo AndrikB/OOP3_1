@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:simpleType name="codeType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0]([1-9]{2})"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="PriceRestriction">
+		<xs:restriction base="xs:decimal">
+			<xs:maxInclusive value="400"/>
+			<xs:minInclusive value="0"/>
+			<xs:fractionDigits value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="OperatorNameRestr">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Kyivstar"/>
+			<xs:enumeration value="Vodafone"/>
+			<xs:enumeration value="Life"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:attributeGroup name="PriceForServiceRestrict">
+		<xs:attribute name="tariffAmount" type="xs:nonNegativeInteger" use="required" />
+		<xs:attribute name="currency" type="xs:string" use="required"/>
+	</xs:attributeGroup>
+
+	<xs:element name="tariffs">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="tariff" maxOccurs="unbounded">
+					<xs:complexType>
+
+						<xs:sequence>
+
+							<xs:element name="name" type="xs:string"/>
+
+							<xs:element name="operatorName">
+								<xs:complexType>
+									<xs:simpleContent>
+										<xs:extension base="OperatorNameRestr">
+										</xs:extension>
+									</xs:simpleContent>
+								</xs:complexType>
+							</xs:element>
+
+							<xs:element name="payroll">
+								<xs:complexType>
+									<xs:simpleContent>
+										<xs:extension base="xs:decimal">
+											<xs:attribute name="frequancy" type="xs:string" use="required" />
+										</xs:extension>
+									</xs:simpleContent>
+								</xs:complexType>
+							</xs:element>
+							
+							<xs:element name="callPrices">
+								<xs:complexType>
+									<xs:sequence>
+
+										<xs:element name="insideNetworkPrice">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="PriceRestriction">
+														<xs:attributeGroup ref="PriceForServiceRestrict"/>
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+
+										<xs:element name="outsideNetworkPrice">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="PriceRestriction">
+														<xs:attributeGroup ref="PriceForServiceRestrict"/>
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+
+										<xs:element name="landlinePrice">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="PriceRestriction">
+														<xs:attributeGroup ref="PriceForServiceRestrict"/>
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+
+							<xs:element name="smsPrice">
+								<xs:complexType>
+									<xs:simpleContent>
+										<xs:extension base="PriceRestriction">
+											<xs:attributeGroup ref="PriceForServiceRestrict"/>
+										</xs:extension>
+									</xs:simpleContent>
+								</xs:complexType>
+							</xs:element>
+
+							<xs:element name="parameters">
+								<xs:complexType>
+									<xs:sequence>
+
+										<xs:element name="selectedNumberPresence">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:pattern value="yes|no"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+
+										<xs:element name="tariffication" >
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="minute"/>
+													<xs:enumeration value="12 seconds"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+
+										<xs:element name="tariffConectionPrice" type="PriceRestriction" />
+
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+
+						</xs:sequence>
+						<xs:attribute name="id" type="xs:ID" use="required" />
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

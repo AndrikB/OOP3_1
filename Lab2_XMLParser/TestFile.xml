@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<tariffs>
+	<tariff id="ID-1">
+		<name>Kyivstar Comfort</name>
+		<operatorName>Kyivstar</operatorName>
+		<payroll frequancy="monthly">75</payroll>
+		<callPrices>
+			<insideNetworkPrice tariffAmount="10000" currency="hrn">0</insideNetworkPrice>
+			<outsideNetworkPrice tariffAmount="1" currency="hrn">1</outsideNetworkPrice>
+			<landlinePrice tariffAmount="1" currency="hrn">1</landlinePrice>
+		</callPrices>
+		<smsPrice tariffAmount="10" currency="hrn">3</smsPrice>
+		<parameters>
+			<selectedNumberPresence>yes</selectedNumberPresence>
+			<tariffication>minute</tariffication>
+			<tariffConectionPrice>75</tariffConectionPrice>
+		</parameters>
+	</tariff>
+</tariffs>

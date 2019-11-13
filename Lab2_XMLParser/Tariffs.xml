@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<tariffs
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="Tariffs.xsd">
+	<tariff id="ID-1">
+		<name>Kyivstar Comfort</name>
+		<operatorName>Kyivstar</operatorName>
+		<payroll frequancy="monthly">75</payroll>
+		<callPrices>
+			<insideNetworkPrice tariffAmount="10000" currency="hrn">0</insideNetworkPrice>
+			<outsideNetworkPrice tariffAmount="1" currency="hrn">1</outsideNetworkPrice>
+			<landlinePrice tariffAmount="1" currency="hrn">1</landlinePrice>
+		</callPrices>
+		<smsPrice tariffAmount="10" currency="hrn">3</smsPrice>
+		<parameters>
+			<selectedNumberPresence>yes</selectedNumberPresence>
+			<tariffication>minute</tariffication>
+			<tariffConectionPrice>75</tariffConectionPrice>
+		</parameters>
+	</tariff>
+
+	<tariff id="ID-2">
+		<name>Communication Without Boundaries</name>
+		<operatorName>Kyivstar</operatorName>
+		<payroll frequancy="4 weeks">125</payroll>
+		<callPrices>
+			<insideNetworkPrice tariffAmount="10000" currency="hrn">0</insideNetworkPrice>
+			<outsideNetworkPrice tariffAmount="1" currency="hrn">1.50</outsideNetworkPrice>
+			<landlinePrice tariffAmount="1" currency="hrn">1.50</landlinePrice>
+		</callPrices>
+		<smsPrice tariffAmount="10" currency="hrn">3</smsPrice>
+		<parameters>
+			<selectedNumberPresence>no</selectedNumberPresence>
+			<tariffication>minute</tariffication>
+			<tariffConectionPrice>125</tariffConectionPrice>
+		</parameters>
+	</tariff>
+
+	<tariff id="ID-3">
+		<name>Unlimited</name>
+		<operatorName>Life</operatorName>
+		<payroll frequancy="4 weeks">40</payroll>
+		<callPrices>
+			<insideNetworkPrice tariffAmount="10000" currency="hrn">0</insideNetworkPrice>
+			<outsideNetworkPrice tariffAmount="1" currency="hrn">0.60</outsideNetworkPrice>
+			<landlinePrice tariffAmount="1" currency="hrn">0.60</landlinePrice>
+		</callPrices>
+		<smsPrice tariffAmount="100" currency="hrn">2</smsPrice>
+		<parameters>
+			<selectedNumberPresence>no</selectedNumberPresence>
+			<tariffication>minute</tariffication>
+			<tariffConectionPrice>45</tariffConectionPrice>
+		</parameters>
+	</tariff>
+
+	<tariff id="ID-4">
+		<name>SuperNet Pro</name>
+		<operatorName>Vodafone</operatorName>
+		<payroll frequancy="monthly">125</payroll>
+		<callPrices>
+			<insideNetworkPrice tariffAmount="10000" currency="hrn">0</insideNetworkPrice>
+			<outsideNetworkPrice tariffAmount="1" currency="hrn">0.6</outsideNetworkPrice>
+			<landlinePrice tariffAmount="1" currency="hrn">0.6</landlinePrice>
+		</callPrices>
+		<smsPrice tariffAmount="50" currency="hrn">1.50</smsPrice>
+		<parameters>
+			<selectedNumberPresence>no</selectedNumberPresence>
+			<tariffication>minute</tariffication>
+			<tariffConectionPrice>125</tariffConectionPrice>
+		</parameters>
+	</tariff>
+
+	<tariff id="ID-5">
+		<name>Lifehack contract</name>
+		<operatorName>Life</operatorName>
+		<payroll frequancy="30 days">125</payroll>
+		<callPrices>
+			<insideNetworkPrice tariffAmount="10000" currency="hrn">0</insideNetworkPrice>
+			<outsideNetworkPrice tariffAmount="250" currency="hrn">0</outsideNetworkPrice>
+			<landlinePrice tariffAmount="20" currency="hrn">1.50</landlinePrice>
+		</callPrices>
+		<smsPrice tariffAmount="250" currency="hrn">0</smsPrice>
+		<parameters>
+			<selectedNumberPresence>yes</selectedNumberPresence>
+			<tariffication>12 seconds</tariffication>
+			<tariffConectionPrice>130</tariffConectionPrice>
+		</parameters>
+	</tariff>
+</tariffs>
