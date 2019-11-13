@@ -16,13 +16,12 @@ public class Screen extends Activity
 
 
     Point displaySize=new Point();
-    Point heroPoint=new Point(1,1);
+
     int width=20;
     int height=40;
 
     DrawView view;
-    int [][]matrix;
-
+    GameLogic game;
 
     private GestureDetectorCompat gestureDetectorCompat;
 
@@ -35,8 +34,10 @@ public class Screen extends Activity
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        game=new GameLogic();
+
         LabyrinthGenerator l=new LabyrinthGenerator(width,height);
-        matrix=l.getMatrix();
+        game.setMatrix(l.getMatrix() );
 
 
         Display display = getWindowManager().getDefaultDisplay();
@@ -44,22 +45,18 @@ public class Screen extends Activity
         view=new DrawView(this, displaySize, new Size(width,height));
 
         setContentView(view);
-        view.setField(matrix);
-        view.setHero(heroPoint);
+        view.setField(game.getMatrix());
+        view.setHero(game.getHeroPoint());
         view.invalidate();
 
-        SwipeGestureDetector gestureLisener =new SwipeGestureDetector(this);
-        gestureDetectorCompat=new GestureDetectorCompat(this, gestureLisener);
+        SwipeGestureDetector gestureListener =new SwipeGestureDetector(this);
+        gestureDetectorCompat=new GestureDetectorCompat(this, gestureListener);
 
     }
 
     public void Move(Moves.Move move){
-        if (move== Moves.Move.RIGHT)heroPoint.x++;
-        if (move== Moves.Move.LEFT)heroPoint.x--;
-
-        if (move== Moves.Move.DOWN)heroPoint.y++;
-        if (move== Moves.Move.UP)heroPoint.y--;
-        view.setHero(heroPoint);
+        game.move(move);
+        view.setHero(game.getHeroPoint());
         view.invalidate();
     }
 
