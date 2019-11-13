@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="lab2.AbstractParserTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-11-07T20:32:11" hostname="DESKTOP-NLVV63L" time="0.151">
-  <properties/>
-  <testcase name="testIsValid" classname="lab2.AbstractParserTest" time="0.151"/>
-  <system-out><![CDATA[isValid
-]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

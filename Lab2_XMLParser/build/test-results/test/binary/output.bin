@@ -1,21 +1,0 @@
-	isValid
-parse
-getAllTariffs
-getAllTariffs
-	elemEnd
-	
-charElem
-
-
-docStart
-getRootElementName
-initializeFieldWithTag
-initializeFieldWithAttribute
-initializeFieldWithTag
-getClassItem
-parse
-getAllTariffs
-getAllTariffs
-parse
-getAllTariffs
-getAllTariffs
