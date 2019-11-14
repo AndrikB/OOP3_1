@@ -16,10 +16,18 @@
         tools:ignore="MissingConstraints">
 
     <Button
-        android:text="@string/btnClick"
-        android:id="@+id/buttonClick"
+        android:text="Start Easy Game"
+        android:id="@+id/buttonClickEasy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
     </Button>
+
+    <Button
+        android:text="Start Hard Game"
+        android:id="@+id/buttonClickHard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        </Button>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

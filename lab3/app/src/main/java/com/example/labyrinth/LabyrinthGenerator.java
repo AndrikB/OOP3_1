@@ -1,5 +1,7 @@
 package com.example.labyrinth;
 
+import android.graphics.Point;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -33,6 +35,9 @@ public class LabyrinthGenerator {
         return this.yExit;
     }
 
+    public Point getExitPoint(){
+        return new Point(xExit,yExit);
+    }
     private void printMatrix(int[][] matrix) {
         System.out.println("-----------------------\n");
         for (int i = yLength - 1; i >= 0; i--) {

@@ -1,6 +1,7 @@
 package com.example.labyrinth;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.util.Size;
@@ -22,30 +23,36 @@ public class Screen extends Activity
 
     DrawView view;
     GameLogic game;
+    GameTypes.Types type;
 
     private GestureDetectorCompat gestureDetectorCompat;
+
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.setContentView(R.layout.second_layout);
-
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        game=new GameLogic();
+        // Get the Intent that started this activity and extract the string
+        Intent intent = this.getIntent();
+        Bundle bundle = intent.getExtras();
+        this.type=(GameTypes.Types)bundle.getSerializable(MainActivity.EXTRA_MESSAGE);
+        game=new GameLogic( );
 
         LabyrinthGenerator l=new LabyrinthGenerator(width,height);
         game.setMatrix(l.getMatrix() );
-
+        game.setFinishPoint(l.getExitPoint());
 
         Display display = getWindowManager().getDefaultDisplay();
         display.getSize(displaySize);
-        view=new DrawView(this, displaySize, new Size(width,height));
 
+        view=new DrawView(this, displaySize, new Size(width,height));
         setContentView(view);
-        view.setField(game.getMatrix());
+
+        view.setGameType(type);
+        view.setField(game.getMatrix(), game.getFinishPoint());
         view.setHero(game.getHeroPoint());
         view.invalidate();
 
@@ -55,7 +62,7 @@ public class Screen extends Activity
     }
 
     public void Move(Moves.Move move){
-        game.move(move);
+        while (game.move(move)){};//todo mb change
         view.setHero(game.getHeroPoint());
         view.invalidate();
     }
