@@ -20,8 +20,6 @@ class GameTypes{
 
 public class DrawView extends View {
 
-    private final Point screenSize;
-
     private GameTypes.Types type;
     private Point heroPoint;
     private Point finishPoint;
@@ -40,7 +38,6 @@ public class DrawView extends View {
         paintHero.setColor(Color.RED);
         paintLight.setColor(Color.YELLOW);
         this.setBackgroundColor(Color.BLACK);
-        this.screenSize =screenSize;
         this.countCell=countCell;
         cellWidth=((float)screenSize.x)/countCell.getWidth();
         cellHeight=((float)screenSize.y)/countCell.getHeight();

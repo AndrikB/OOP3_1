@@ -16,45 +16,34 @@ public class LabyrinthGenerator {
     private int[][] matrix = null;
     private int xLength, yLength;
     private int xExit, yExit;
-    Random random = new Random(System.currentTimeMillis());
-
+    private Random random;
+    private long seed = System.currentTimeMillis();
     LabyrinthGenerator(int xLength, int yLength){
-        this.generate(xLength,yLength);
-        //printMatrix(matrix);
+        this.xLength = xLength;
+        this.yLength = yLength;
+        this.generate();
+    }
+
+    LabyrinthGenerator(int xLength, int yLength,  long seed){
+        this.xLength = xLength;
+        this.yLength = yLength;
+        this.seed=seed;
+        this.generate();
     }
 
     public int[][] getMatrix() {
         return matrix;
     }
 
-    public int getXExit() {
-        return this.xExit;
-    }
-
-    public int getYExit() {
-        return this.yExit;
-    }
 
     public Point getExitPoint(){
         return new Point(xExit,yExit);
     }
-    private void printMatrix(int[][] matrix) {
-        System.out.println("-----------------------\n");
-        for (int i = yLength - 1; i >= 0; i--) {
-            for (int j = 0; j < xLength; j++)
-                if (matrix[i][j] >= 0)
-                    System.out.print("  " + matrix[i][j]);
-                else
-                    System.out.print(" " + matrix[i][j]);
-            System.out.println();
-        }
-    }
 
-    public void generate(int xLength, int yLength) {
+
+    public void generate() {
         matrix = new int[yLength][xLength];
-        this.xLength = xLength;
-        this.yLength = yLength;
-
+        random = new Random(seed);
         generateWalls();
         generatePasses();
         generateExit();
