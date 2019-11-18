@@ -3,12 +3,11 @@ package com.example.labyrinth;
 import android.graphics.Point;
 
 public class GameLogic {
-    GameTypes.Types type;
+    Types type;
     Point heroPoint=new Point();
-    Point finishPoint;
-    int [][]matrix;
+    Labyrinth labyrinth;
     LabyrinthGenerator l;
-    public GameLogic(int width, int height, GameTypes.Types type){
+    public GameLogic(int width, int height, Types type){
         l=new LabyrinthGenerator(width,height);
         this.type=type;
     }
@@ -16,58 +15,33 @@ public class GameLogic {
     public void restart(){
         heroPoint.set(1,1);
         l.generate();
-        setMatrix(l.getMatrix() );
-        setFinishPoint(l.getExitPoint());
+        this.labyrinth=l.getLabyrinth();
     }
 
     public final boolean couldNextMove(){
         int countFreeCells=0;
-
-
-        if (matrix[heroPoint.y+1][heroPoint.x]==0){countFreeCells++;
-            System.out.print(new Point(heroPoint.x,heroPoint.y+1));
-            System.out.println(matrix[heroPoint.y+1][heroPoint.x]);
-        }
-        if (matrix[heroPoint.y-1][heroPoint.x]==0){countFreeCells++;
-            System.out.print(new Point(heroPoint.x,heroPoint.y-1));
-            System.out.println(matrix[heroPoint.y-1][heroPoint.x]);
-        }
-        if (matrix[heroPoint.y][heroPoint.x+1]==0){countFreeCells++;
-            System.out.print(new Point(heroPoint.x+1,heroPoint.y));
-            System.out.println(matrix[heroPoint.y][heroPoint.x+1]);
-        }
-        if (matrix[heroPoint.y][heroPoint.x-1]==0){countFreeCells++;
-            System.out.print(new Point(heroPoint.x-1,heroPoint.y));
-            System.out.println(matrix[heroPoint.y][heroPoint.x-1]);
-        }
-        System.out.println(countFreeCells);
-        return (countFreeCells<3&&type== GameTypes.Types.Classic);
+        if (labyrinth.elementAt(new Point(heroPoint.x,heroPoint.y+1))==0){countFreeCells++;}
+        if (labyrinth.elementAt(new Point(heroPoint.x,heroPoint.y-1))==0){countFreeCells++;}
+        if (labyrinth.elementAt(new Point(heroPoint.x+1,heroPoint.y))==0){countFreeCells++;}
+        if (labyrinth.elementAt(new Point(heroPoint.x-1,heroPoint.y))==0){countFreeCells++;}
+        return (countFreeCells<3&&type== Types.Classic);
     }
 
-    public void setMatrix(int [][]matrix){
-        this.matrix=matrix;
+    public Labyrinth getLabyrinth(){
+        return labyrinth;
     }
-    public int [][] getMatrix(){
-        return matrix;
-    }
-
-    public void setFinishPoint(Point finishPoint){
-        this.finishPoint=finishPoint;
-    }
-
-    public Point getFinishPoint(){return finishPoint;}
 
     public Point getHeroPoint(){
         return heroPoint;
     }
 
-    public boolean move(Moves.Move move){
+    public boolean move(Move move){
         Point nextItem=new Point(heroPoint);
-        if (move == Moves.Move.RIGHT)nextItem.x++;
-        if (move == Moves.Move.LEFT)nextItem.x--;
-        if (move == Moves.Move.DOWN)nextItem.y++;
-        if (move == Moves.Move.UP)nextItem.y--;
-        if (matrix[nextItem.y][nextItem.x]==0) {
+        if (move == Move.RIGHT)nextItem.x++;
+        if (move == Move.LEFT)nextItem.x--;
+        if (move == Move.DOWN)nextItem.y++;
+        if (move == Move.UP)nextItem.y--;
+        if (labyrinth.elementAt(nextItem)==0) {
             heroPoint=nextItem;
             return  checkWin();
 
@@ -77,6 +51,6 @@ public class GameLogic {
     }
 
     public boolean checkWin(){
-        return heroPoint.equals(finishPoint);
+        return heroPoint.equals(labyrinth.getExitPoint());
     }
 }

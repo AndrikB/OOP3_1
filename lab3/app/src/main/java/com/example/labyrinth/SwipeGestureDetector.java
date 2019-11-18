@@ -1,10 +1,8 @@
 package com.example.labyrinth;
 
-import android.app.Activity;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 
-import static java.lang.Math.min;
 import static java.lang.StrictMath.max;
 
 
@@ -31,15 +29,13 @@ public class SwipeGestureDetector extends GestureDetector.SimpleOnGestureListene
                 return false;
 
             if (deltaXAbs>deltaYAbs){
-                if (deltaX>0) activity.Move(Moves.Move.RIGHT);
-                else activity.Move(Moves.Move.LEFT);
+                if (deltaX>0) activity.Move(Move.RIGHT);
+                else activity.Move(Move.LEFT);
             }
             else{
-                if (deltaY>0) activity.Move(Moves.Move.DOWN);
-                else activity.Move(Moves.Move.UP);
+                if (deltaY>0) activity.Move(Move.DOWN);
+                else activity.Move(Move.UP);
             }
-
-
 
         } catch (Exception e) {
             // Log.e("Home", "Error on gestures");

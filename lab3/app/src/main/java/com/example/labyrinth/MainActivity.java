@@ -36,13 +36,13 @@ public class MainActivity extends Activity
     @Override
     public void onClick(View view) {
 
-        GameTypes.Types type= GameTypes.Types.Classic;
+        Types type= Types.Classic;
         if(view.getId() == R.id.buttonClickEasy){
-            type= GameTypes.Types.Classic;
+            type= Types.Classic;
         }
 
         if(view.getId() == R.id.buttonClickHard){
-            type= GameTypes.Types.Hard;
+            type= Types.Hard;
         }
 
         if (view.getId() == R.id.buttonClickEasy||

@@ -24,7 +24,7 @@ public class Screen extends Activity
 
     DrawView view;
     GameLogic game;
-    GameTypes.Types type;
+    Types type;
 
     private GestureDetectorCompat gestureDetectorCompat;
 
@@ -37,7 +37,7 @@ public class Screen extends Activity
 
         Intent intent = this.getIntent();
         Bundle bundle = intent.getExtras();
-        this.type=(GameTypes.Types)bundle.getSerializable(MainActivity.EXTRA_MESSAGE);
+        this.type=(Types)bundle.getSerializable(MainActivity.EXTRA_MESSAGE);
 
         Display display = getWindowManager().getDefaultDisplay();
         display.getSize(displaySize);
@@ -54,7 +54,7 @@ public class Screen extends Activity
     }
 
 
-    public void Move(Moves.Move move){
+    public void Move(Move move){
         Point lastHeroPoint;
         do {
             lastHeroPoint=game.getHeroPoint();
@@ -79,7 +79,7 @@ public class Screen extends Activity
 
     public void startNewGame() {
         game.restart();
-        view.setField(game.getMatrix(), game.getFinishPoint());
+        view.setLabyrinth(game.getLabyrinth());
         view.setHero(game.getHeroPoint());
         view.invalidate();
     }

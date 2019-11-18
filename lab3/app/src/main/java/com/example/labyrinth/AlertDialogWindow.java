@@ -4,7 +4,7 @@ package com.example.labyrinth;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 
-//import com.example.labyrinth.Screen;
+
 
 public class AlertDialogWindow {
     public static void showDialogWindow(final Screen context) {
